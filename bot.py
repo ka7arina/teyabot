@@ -126,15 +126,10 @@ Example: <@&1253431093936390368> NSFW content**
     print('Rules sent successfully')
 
 images = [
-    ("C:/Projects/Discord/teyabot/images/IMG_6845.jpeg", "grandma  teya"),
-    ("C:/Projects/Discord/teyabot/images/IMG_6847.jpeg", "teya  &  salena  for  the  bye  bye  bye  music  video"),
-    ("C:/Projects/Discord/teyabot/images/IMG_6855.jpeg", "mischievous  ladybug  and  bee"),
-    ("C:/Projects/Discord/teyabot/images/IMG_6846.jpeg", "ladybug  teya"),
-    ("C:/Projects/Discord/teyabot/images/IMG_6854.jpeg", "teya  and  salena  🩷"),
-    ("C:/Projects/Discord/teyabot/images/70490BD3-F194-4C17-934D-E5DA732E0F2C_v0_h.jpg", "crystal  ball  leak"),
-    ("C:/Projects/Discord/teyabot/images/byebyebyecloseup.jpg", "bug  duo"),
-    ("C:/Projects/Discord/teyabot/images/escbts.jpg", "teya  behind  the  scenes  at  eurovision"),
-    ("C:/Projects/Discord/teyabot/images/escphotoshoot.jpg", "teya  &  salena  for  eurovision  2023"),
+    ("https://www.w24.at/assets/uploads/230904_w24_teyasalena_tv.jpg", "mischievous ladybug and bee"),
+    ("https://www.keymedia.at/wp-content/uploads/2023/01/orf_keymedia_20230131111110-988x608.jpg", "crystal ball leak"),
+    ("https://cdns-images.dzcdn.net/images/artist/bcf1549733a988db5dfe8198fc23b516/1900x1900-000000-80-0-0.jpg", "teya behind the scenes at eurovision"),
+    ("https://ichef.bbci.co.uk/news/976/cpsprodpb/2A5C/production/_129644801_2023.05.05corinnecumming-ebu-4495_0.jpg", "teya & salena for eurovision 2023"),
 ]
 
 @bot.command(name='random')
@@ -142,20 +137,13 @@ async def random_image(ctx):
     random_image = random.choice(images)
 
     embed = discord.Embed(
-        title='image  throwback  ˖⁺‧₊⟡₊˚⊹ 🐞',
+        title='image throwback ˖⁺‧₊⟡₊˚⊹ 🐞',
         description=random_image[1],
         color=0x8B0000
     )
+    embed.set_image(url=random_image[0])
 
-    try:
-        file = discord.File(random_image[0], filename="random_image.jpeg")
-        embed.set_image(url="attachment://random_image.jpeg")
-    except FileNotFoundError:
-        print(f"File not found: {random_image[0]}")
-        await ctx.send("Failed to send random image due to missing file.")
-        return
-
-    await ctx.send(file=file, embed=embed)
+    await ctx.send(embed=embed)
 
 
 lyrics_library = {
@@ -324,16 +312,6 @@ https://x.com/wthisteya?t=4BQxV-V9reBW60GOSg55Og&s=09
 
 
 
-@bot.command()
-async def song_vs_song(ctx):
-    embed1 = discord.Embed(title="Bye Bye Bye", description="Teya & Salena", color=0x1DB954)
-    embed1.add_field(name="Listen on Spotify", value="[Bye Bye Bye](https://open.spotify.com/track/6fw0xfMwFrWz7o7TBnIlqp?si=32b6342f697a46cb)", inline=False)
 
-    embed2 = discord.Embed(title="Ho Ho Ho", description="Teya & Salena", color=0x1DB954)
-    embed2.add_field(name="Listen on Spotify", value="[Ho Ho Ho](https://open.spotify.com/track/218twrmZtzyj8B7pknJdGD?si=29e41e45553045cb)", inline=False)
+bot.run(os.getenv('DISCORD_TOKEN'))
 
-    await ctx.send(embed=embed1)
-    await ctx.send(embed=embed2)
-
-
-bot.run('MTI0MDc1ODI0MjAwNzU4MDc4NA.GhPcCz.JLuKuiC-440eE6wtvS5qMCG2fuY_OpBSN3U5As')
