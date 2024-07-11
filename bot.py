@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import random
-from discord.ui import Button, View
+import os
 
 GUILD_ID = 1249397298618957999
 STAFF_EMERGENCY_VC_ID = 1250140892497444929
@@ -43,11 +43,11 @@ async def send_rules(ctx):
   •  Make sure you comply with Discords TOS. This includes only ages 13+ allowed as well as no 'alt' accounts allowed.
 ### __**2. Respect Regular Members**__
   •  Stay respectful to all members in the server. We want this server to be a comfortable space for everybody.
-  •  Do not discriminate against someone or harrass them.
+  •  Do not discriminate against someone or harass them.
   •  This rule extends to DMs.
 ### __**3. Respect Teya**__
   •  Any disrespect towards Teya is not allowed.
-  •  This includes rude comments, speculating on her personal life, sexualisation of her, constant bothering or harrasing her.
+  •  This includes rude comments, speculating on her personal life, sexualisation of her, constant bothering or harassing her.
   • Do not share Teya's messages outside of the server and/or on other social media platforms.
   • Do not attempt to ping Teya.
 ### __**4. Respect Moderators Judgement**__
@@ -106,24 +106,19 @@ Example: <@&1253431093936390368> NSFW content**
     """
 
     embed = discord.Embed(
-        title="( server  rules ) : ❤️",
+        title="( server rules ) : ❤️",
         description=description,
         color=0xFF5733
     )
 
-    embed.set_footer(text="please  confirm  you ' ve  read  the  rules  via  the  button below <3")
+    embed.set_footer(text="please confirm you ' ve read the rules via the button below <3")
 
-    file_path = "C:/Projects/Discord/teyabot/images/teya.jpeg"  
-    try:
-        file = discord.File(file_path, filename="teya.jpeg")
-        embed.set_image(url="attachment://teya.jpeg")
-    except FileNotFoundError:
-        print(f"File not found: {file_path}")
-        await ctx.send("Failed to send rules due to missing image file.")
-        return
+    image_url = "https://your-image-url.com/teya.jpeg"  # Replace with your image URL
+    embed.set_image(url=image_url)
 
-    await ctx.send(file=file, embed=embed)
+    await ctx.send(embed=embed)
     print('Rules sent successfully')
+
 
 images = [
     ("https://www.w24.at/assets/uploads/230904_w24_teyasalena_tv.jpg", "mischievous ladybug and bee"),
@@ -310,8 +305,4 @@ https://x.com/wthisteya?t=4BQxV-V9reBW60GOSg55Og&s=09
     await ctx.send(embed=embed)
     print('Links sent successfully')
 
-
-
-
 bot.run(os.getenv('DISCORD_TOKEN'))
-
