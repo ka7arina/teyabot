@@ -187,7 +187,7 @@ async def on_message(message):
 
     await bot.process_commands(message)  
 
-@bot.command(name='play_finish_the_lyrics')
+@bot.command(name='play')
 async def play_lyrics(ctx):
     global current_lyric
     current_lyric = random.choice(list(lyrics_library.items()))
@@ -200,7 +200,7 @@ async def play_lyrics(ctx):
     
     await ctx.send(embed=embed)
 
-@bot.command(name='reveal_song_answer')
+@bot.command(name='answer')
 async def reveal_answer(ctx):
     global current_lyric
     if current_lyric:
