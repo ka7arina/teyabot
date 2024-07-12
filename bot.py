@@ -106,12 +106,12 @@ Example: <@&1253431093936390368> NSFW content**
     """
 
     embed = discord.Embed(
-        title="( server rules ) : ❤️",
+        title="( SERVER RULES ) : ❤️",
         description=description,
         color=0xFF5733
     )
 
-    embed.set_footer(text="please confirm you ' ve read the rules via the button below <3")
+    embed.set_footer(text="please read the rules thoroughly and follow them <3")
 
     image_url = "https://your-image-url.com/teya.jpeg"  # Replace with your image URL
     embed.set_image(url=image_url)
